@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <br /><br />
+    <h3>New blog post</h3>
+    <form action="/posted" method="POST">
+        <label>
+            Title:
+            <input type="text" name='title' />
+            {% if error1|length != 0 %}<span class="error"> Title is required!</span>{% endif %}
+        </label>
+        <br /><br />
+        <label>
+            Body:
+            <input type="text" name='body' />{% if error2|length != 0 %}<span class="error"> Body is required!</span>{% endif %}
+        </label>
+        <br /><br />
+        <input type="submit" value='Post!' />
+        <br /><br />
+    </form>
+
+    <hr />
+
+{% endblock %}
