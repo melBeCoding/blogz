@@ -1,18 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <br /><br />
-    <h3>New blog post</h3>
+<br /><br />
     <form action="/posted" method="POST">
+      <h3>New blog post</h3>
         <label>
             Title:
-            <input type="text" name='title' />
+            {% if stitle|length != 0 %}
+            <input type="text" name='title' value="{{stitle}}"/>
+            {% else %}
+            <input type="text" name='title'/>
+            {% endif %}
             {% if error1|length != 0 %}<span class="error"> Title is required!</span>{% endif %}
         </label>
         <br /><br />
         <label>
             Body:
-            <input type="text" name='body' />{% if error2|length != 0 %}<span class="error"> Body is required!</span>{% endif %}
+            {% if sbody|length != 0 %}
+            <input type="text" name='body'  value="{{sbody}}"/>
+            {% else %}
+            <input type="text" name='body' />
+            {% endif %}
+            {% if error2|length != 0 %}<span class="error"> Body is required!</span>{% endif %}
         </label>
         <br /><br />
         <input type="submit" value='Post!' />
